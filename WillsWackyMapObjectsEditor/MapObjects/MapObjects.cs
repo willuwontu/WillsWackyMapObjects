@@ -2,7 +2,6 @@
 using MapsExt.MapObjects;
 using MapsExt.Editor;
 using MapsExt.Editor.MapObjects;
-using MapsExt.MapObjects;
 using UnityEngine;
 
 namespace WWMO.MapObjects

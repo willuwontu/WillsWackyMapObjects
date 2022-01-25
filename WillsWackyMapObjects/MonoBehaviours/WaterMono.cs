@@ -39,7 +39,7 @@ namespace WWMO.MonoBehaviours
 
         public override void HandlePlayer(Player player)
         {
-            player.data.healthHandler.CallTakeForce(new Vector2(this.transform.up.normalized.x * 2.5f, this.transform.up.normalized.y * 1f/5f) * forceMult * (float)player.data.playerVel.GetFieldValue("mass"));
+            player.data.healthHandler.CallTakeForce(new Vector2(this.transform.up.normalized.x * 4f, this.transform.up.normalized.y * 1f/2f) * forceMult * (float)player.data.playerVel.GetFieldValue("mass"));
         }
 
         public override void HandleBox(Rigidbody2D rb)
@@ -140,6 +140,11 @@ namespace WWMO.MonoBehaviours
         {
             base.HandleBox(rb);
 
+            if (rb.isKinematic || rb.gameObject.layer == LayerMask.NameToLayer("BackgroundObject"))
+            {
+                return;
+            }
+
             if (rb.GetComponent<DamagableEvent>())
             {
                 rb.GetComponent<DamagableEvent>().CallTakeDamage(Vector2.up * 2, Vector2.zero);
@@ -194,6 +199,11 @@ namespace WWMO.MonoBehaviours
         public override void HandleBox(Rigidbody2D rb)
         {
             base.HandleBox(rb);
+
+            if (rb.isKinematic)
+            {
+                return;
+            }
 
             if (rb.GetComponent<DamagableEvent>())
             {
@@ -730,7 +740,6 @@ namespace WWMO.MonoBehaviours
         public bool[] inSpace = new bool[] { true, true };
 
         private MoveTransform move;
-        private float initialGravity;
 
         private void Start()
         {
@@ -785,7 +794,7 @@ namespace WWMO.MonoBehaviours
 
         private void FixedUpdate()
         {
-            var colliders = Physics2D.OverlapBoxAll(transform.position, gameObject.GetOrAddComponent<RectTransform>().localScale * 1f, Vector3.SignedAngle(Vector3.up, transform.up.normalized, Vector3.up));
+            var colliders = Physics2D.OverlapBoxAll(transform.position, gameObject.GetOrAddComponent<RectTransform>().localScale * 1f, Vector2.SignedAngle(Vector2.up, (Vector2) transform.up.normalized));
 
             foreach (var collider in colliders)
             {

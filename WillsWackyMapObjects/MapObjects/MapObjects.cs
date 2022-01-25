@@ -7,7 +7,7 @@ using WWMO.MonoBehaviours;
 
 namespace WWMO.MapObjects
 {
-    #region Water Objects
+    #region Liquids
     #region Water
     public class Water : SpatialMapObject
     {
@@ -118,5 +118,34 @@ namespace WWMO.MapObjects
     }
 
     #endregion
+
+    #region ForceZone
+
+    public class ForceZone : SpatialMapObject
+    {
+    }
+
+    [MapObjectSpec(typeof(ForceZone))]
+    public static class ForceZoneSpec
+    {
+        [MapObjectPrefab]
+        public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground");
+
+        [MapObjectSerializer]
+        public static void Serialize(GameObject instance, ForceZone target)
+        {
+            SpatialSerializer.Serialize(instance, target);
+        }
+
+        [MapObjectDeserializer]
+        public static void Deserialize(ForceZone data, GameObject target)
+        {
+            SpatialSerializer.Deserialize(data, target);
+            target.GetOrAddComponent<ForceZoneMono>();
+        }
+    }
+
+    #endregion
+
     #endregion
 }

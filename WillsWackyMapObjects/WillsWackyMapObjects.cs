@@ -4,6 +4,8 @@ using BepInEx;
 using HarmonyLib;
 using MapsExt;
 using UnboundLib;
+using UnityEngine;
+using Jotunn.Utils;
 
 namespace WWMO
 {
@@ -19,6 +21,8 @@ namespace WWMO
 
         public static WillsWackyMapObjects instance { get; private set; }
 
+        public AssetBundle MapObjectAssets;
+
         void Awake()
         {
             var harmony = new Harmony(ModId);
@@ -30,6 +34,8 @@ namespace WWMO
             Unbound.RegisterCredits(ModName, new string[] { "willuwontu" }, new string[] { "github", "Ko-Fi" }, new string[] { "https://github.com/willuwontu/WillsWackyMapObjects", "https://ko-fi.com/willuwontu" });
 
             instance = this;
+
+            MapObjectAssets = AssetUtils.LoadAssetBundleFromResources("wwmo", typeof(WillsWackyMapObjects).Assembly);
 
             var assembly = Assembly.GetCallingAssembly();
             this.ExecuteAfterSeconds(0.1f, () => { MapsExtended.instance.RegisterMapObjectsAction?.Invoke(assembly); });

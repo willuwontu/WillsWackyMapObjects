@@ -5,3 +5,6 @@ Adds 4 liquids to the map editor:
 - Lava
 - Acid
 - Space
+
+Add 1 new block
+- Force Zone

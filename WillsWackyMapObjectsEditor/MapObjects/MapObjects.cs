@@ -71,5 +71,21 @@ namespace WWMO.MapObjects
     }
 
     #endregion
+
+    #region Space
+
+    [EditorMapObjectSpec(typeof(MapObjects.ForceZone), "Force Zone", "Liquids")]
+    public static class EditorForceZone
+    {
+        [EditorMapObjectPrefab] public static GameObject Prefab => MapObjects.ForceZoneSpec.Prefab;
+
+        [EditorMapObjectSerializer]
+        public static SerializerAction<MapObjects.ForceZone> Serialize => EditorSpatialSerializer.BuildSerializer<MapObjects.ForceZone>(MapObjects.ForceZoneSpec.Serialize);
+
+        [EditorMapObjectDeserializer]
+        public static DeserializerAction<MapObjects.ForceZone> Deserialize => EditorSpatialSerializer.BuildDeserializer<MapObjects.ForceZone>(MapObjects.ForceZoneSpec.Deserialize);
+    }
+
+    #endregion
     #endregion
 }

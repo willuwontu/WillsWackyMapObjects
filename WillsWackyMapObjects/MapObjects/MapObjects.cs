@@ -17,7 +17,7 @@ namespace WWMO.MapObjects
     public static class WaterSpec
     {
         [MapObjectPrefab] 
-        public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground").GetOrAddComponent<WaterMono>().gameObject;
+        public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground");
 
         [MapObjectSerializer]
         public static void Serialize(GameObject instance, Water target)
@@ -45,7 +45,7 @@ namespace WWMO.MapObjects
     public static class AcidSpec
     {
         [MapObjectPrefab]
-        public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground").GetOrAddComponent<AcidMono>().gameObject;
+        public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground");
 
         [MapObjectSerializer]
         public static void Serialize(GameObject instance, Acid target)
@@ -73,7 +73,7 @@ namespace WWMO.MapObjects
     public static class LavaSpec
     {
         [MapObjectPrefab]
-        public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground").GetOrAddComponent<LavaMono>().gameObject;
+        public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground");
 
         [MapObjectSerializer]
         public static void Serialize(GameObject instance, Lava target)
@@ -101,7 +101,7 @@ namespace WWMO.MapObjects
     public static class SpaceSpec
     {
         [MapObjectPrefab]
-        public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground").GetOrAddComponent<SpaceMono>().gameObject;
+        public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground");
 
         [MapObjectSerializer]
         public static void Serialize(GameObject instance, Space target)

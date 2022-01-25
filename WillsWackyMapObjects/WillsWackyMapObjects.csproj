@@ -20,12 +20,6 @@
     <Reference Include="MapsExtended">
       <HintPath>..\..\..\Visual Studio 2019\Projects\Rounds\Dependencies\MapsExtended.dll</HintPath>
     </Reference>
-    <Reference Include="MapsExtended.Editor">
-      <HintPath>..\..\..\Visual Studio 2019\Projects\Rounds\Dependencies\MapsExtended.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="MapsExtended.Editor.UI">
-      <HintPath>..\..\..\Visual Studio 2019\Projects\Rounds\Dependencies\MapsExtended.Editor.UI.dll</HintPath>
-    </Reference>
     <Reference Include="ModdingUtils">
       <HintPath>..\..\..\Visual Studio 2019\Projects\Rounds\Dependencies\ModdingUtils.dll</HintPath>
     </Reference>

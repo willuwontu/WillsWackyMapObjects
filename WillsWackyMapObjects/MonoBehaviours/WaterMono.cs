@@ -10,7 +10,7 @@ namespace WWMO.MonoBehaviours
 {
     public class LavaMono : WaterMono
     {
-        private float _forceMult = 0.75f;
+        private float _forceMult = 0.8f;
         public override float forceMult
         {
             get
@@ -64,7 +64,7 @@ namespace WWMO.MonoBehaviours
 
     public class AcidMono : WaterMono
     {
-        private float _forceMult = 0.705f;
+        private float _forceMult = 0.685f;
         public override float forceMult
         {
             get
@@ -101,9 +101,9 @@ namespace WWMO.MonoBehaviours
             }
             else
             {
-                rb.gameObject.transform.localScale = new Vector3(rb.gameObject.transform.localScale.x * 0.9975f, rb.gameObject.transform.localScale.y * 0.9975f, rb.gameObject.transform.localScale.z);
+                rb.gameObject.transform.localScale = new Vector3(rb.gameObject.transform.localScale.x * 0.9985f, rb.gameObject.transform.localScale.y * 0.9985f, rb.gameObject.transform.localScale.z);
 
-                if (((Vector2)rb.gameObject.transform.localScale).magnitude <= new Vector2(0.15f, 0.15f).magnitude)
+                if (((Vector2)rb.gameObject.transform.localScale).magnitude <= new Vector2(0.2f, 0.2f).magnitude)
                 {
                     Destroy(rb.gameObject);
                 }
@@ -138,7 +138,7 @@ namespace WWMO.MonoBehaviours
         {
             get
             {
-                return new Color(0.35f, 0.35f, 0.35f, 0.0275f);
+                return new Color(0.5f, 0.5f, 0.5f, 0.03f);
             }
         }
 
@@ -147,6 +147,15 @@ namespace WWMO.MonoBehaviours
             var data = player.data;
 
             var inSpace = data.gameObject.GetOrAddComponent<PlayerInSpace_Mono>();
+
+            if (!(data.isGrounded || data.isWallGrab))
+            {
+                player.data.healthHandler.CallTakeForce(Vector2.up * 0.125f * (float)player.data.playerVel.GetFieldValue("mass"));
+            }
+            else if (data.isGrounded)
+            {
+                player.data.healthHandler.CallTakeForce(Vector2.down * 0.125f * (float)player.data.playerVel.GetFieldValue("mass"));
+            }
 
             inSpace.inSpace = new bool[] { true, true };
         }
@@ -171,7 +180,7 @@ namespace WWMO.MonoBehaviours
 
         public RaycastHit2D[] hits;
 
-        private float _forceMult = 0.7125f;
+        private float _forceMult = 0.745f;
         public virtual float forceMult
         {
             get
@@ -193,14 +202,14 @@ namespace WWMO.MonoBehaviours
 
         public void Start()
         {
-            if (gameObject.GetComponent<Collider2D>())
-            {
-                Destroy(gameObject.GetComponent<Collider2D>());
-            }
+            //if (gameObject.GetComponent<Collider2D>())
+            //{
+            //    Destroy(gameObject.GetComponent<Collider2D>());
+            //}
 
-            //this.gameObject.layer = LayerMask.NameToLayer("BackgroundObject");
-            //var coll = gameObject.GetOrAddComponent<BoxCollider2D>();
-            //coll.isTrigger = true;
+            this.gameObject.layer = LayerMask.NameToLayer("BackgroundObject");
+            var coll = gameObject.GetOrAddComponent<BoxCollider2D>();
+            coll.isTrigger = true;
 
             //var rigid = gameObject.GetOrAddComponent<Rigidbody2D>();
             //rigid.isKinematic = true;
@@ -286,7 +295,7 @@ namespace WWMO.MonoBehaviours
             //trail.AddPositions(new Vector3[] { this.transform.position, collider.transform.position });
 
             // If our patch of water
-            if (collider.gameObject == gameObject)
+            if (collider.gameObject == this.gameObject)
             {
                 return;
             }
@@ -322,6 +331,8 @@ namespace WWMO.MonoBehaviours
 
             data.currentJumps = data.jumps;
             var inWater = data.gameObject.GetOrAddComponent<PlayerInWater_Mono>();
+
+            player.data.healthHandler.CallTakeForce(Vector2.up * 0.15f * (float)player.data.playerVel.GetFieldValue("mass"), ForceMode2D.Impulse);
 
             inWater.hadWater = new bool[] { true, true };
         }

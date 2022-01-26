@@ -7,8 +7,6 @@ using WWMO.MonoBehaviours;
 
 namespace WWMO.MapObjects
 {
-    public class MapObjects
-    {
 		#region Liquids
         #region Water
         public class Water : SpatialMapObject
@@ -150,5 +148,4 @@ namespace WWMO.MapObjects
         #endregion
 
         #endregion 
-    }
 }

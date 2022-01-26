@@ -23,6 +23,8 @@ namespace WWMO
 
         public AssetBundle MapObjectAssets;
 
+        internal static readonly Material defaultMaterial = new Material(Shader.Find("Sprites/Default"));
+
         void Awake()
         {
             var harmony = new Harmony(ModId);

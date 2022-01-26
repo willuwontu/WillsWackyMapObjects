@@ -1,5 +1,4 @@
-﻿using WWMO;
-using MapsExt.MapObjects;
+﻿using MapsExt.MapObjects;
 using MapsExt.Editor;
 using MapsExt.Editor.MapObjects;
 using UnityEngine;

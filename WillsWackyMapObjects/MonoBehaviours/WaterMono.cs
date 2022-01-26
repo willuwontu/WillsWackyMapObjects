@@ -325,7 +325,9 @@ namespace WWMO.MonoBehaviours
             //rigid.isKinematic = true;
             //rigid.useFullKinematicContacts = true;
 
-            gameObject.GetComponent<SpriteRenderer>().color = waterColor;
+            gameObject.GetOrAddComponent<SpriteRenderer>().material = WillsWackyMapObjects.defaultMaterial;
+
+            gameObject.GetOrAddComponent<SpriteRenderer>().color = waterColor;
 
             gameObject.GetOrAddComponent<RectTransform>();
 

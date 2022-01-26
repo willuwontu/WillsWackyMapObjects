@@ -7,145 +7,148 @@ using WWMO.MonoBehaviours;
 
 namespace WWMO.MapObjects
 {
-    #region Liquids
-    #region Water
-    public class Water : SpatialMapObject
+    public class MapObjects
     {
-    }
-
-    [MapObjectSpec(typeof(Water))]
-    public static class WaterSpec
-    {
-        [MapObjectPrefab] 
-        public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground");
-
-        [MapObjectSerializer]
-        public static void Serialize(GameObject instance, Water target)
+		#region Liquids
+        #region Water
+        public class Water : SpatialMapObject
         {
-            SpatialSerializer.Serialize(instance, target);
         }
 
-        [MapObjectDeserializer]
-        public static void Deserialize(Water data, GameObject target)
+        [MapObjectSpec(typeof(Water))]
+        public static class WaterSpec
         {
-            SpatialSerializer.Deserialize(data, target);
-            target.GetOrAddComponent<WaterMono>();
-        }
-    }
+            [MapObjectPrefab]
+            public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground");
 
-    #endregion
+            [MapObjectSerializer]
+            public static void Serialize(GameObject instance, Water target)
+            {
+                SpatialSerializer.Serialize(instance, target);
+            }
 
-    #region Acid
-
-    public class Acid : SpatialMapObject
-    {
-    }
-
-    [MapObjectSpec(typeof(Acid))]
-    public static class AcidSpec
-    {
-        [MapObjectPrefab]
-        public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground");
-
-        [MapObjectSerializer]
-        public static void Serialize(GameObject instance, Acid target)
-        {
-            SpatialSerializer.Serialize(instance, target);
+            [MapObjectDeserializer]
+            public static void Deserialize(Water data, GameObject target)
+            {
+                SpatialSerializer.Deserialize(data, target);
+                target.GetOrAddComponent<WaterMono>();
+            }
         }
 
-        [MapObjectDeserializer]
-        public static void Deserialize(Acid data, GameObject target)
+        #endregion
+
+        #region Acid
+
+        public class Acid : SpatialMapObject
         {
-            SpatialSerializer.Deserialize(data, target);
-            target.GetOrAddComponent<AcidMono>();
-        }
-    }
-
-    #endregion
-
-    #region Lava
-
-    public class Lava : SpatialMapObject
-    {
-    }
-
-    [MapObjectSpec(typeof(Lava))]
-    public static class LavaSpec
-    {
-        [MapObjectPrefab]
-        public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground");
-
-        [MapObjectSerializer]
-        public static void Serialize(GameObject instance, Lava target)
-        {
-            SpatialSerializer.Serialize(instance, target);
         }
 
-        [MapObjectDeserializer]
-        public static void Deserialize(Lava data, GameObject target)
+        [MapObjectSpec(typeof(Acid))]
+        public static class AcidSpec
         {
-            SpatialSerializer.Deserialize(data, target);
-            target.GetOrAddComponent<LavaMono>();
-        }
-    }
+            [MapObjectPrefab]
+            public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground");
 
-    #endregion
+            [MapObjectSerializer]
+            public static void Serialize(GameObject instance, Acid target)
+            {
+                SpatialSerializer.Serialize(instance, target);
+            }
 
-    #region Space
-
-    public class Space : SpatialMapObject
-    {
-    }
-
-    [MapObjectSpec(typeof(Space))]
-    public static class SpaceSpec
-    {
-        [MapObjectPrefab]
-        public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground");
-
-        [MapObjectSerializer]
-        public static void Serialize(GameObject instance, Space target)
-        {
-            SpatialSerializer.Serialize(instance, target);
+            [MapObjectDeserializer]
+            public static void Deserialize(Acid data, GameObject target)
+            {
+                SpatialSerializer.Deserialize(data, target);
+                target.GetOrAddComponent<AcidMono>();
+            }
         }
 
-        [MapObjectDeserializer]
-        public static void Deserialize(Space data, GameObject target)
+        #endregion
+
+        #region Lava
+
+        public class Lava : SpatialMapObject
         {
-            SpatialSerializer.Deserialize(data, target);
-            target.GetOrAddComponent<SpaceMono>();
-        }
-    }
-
-    #endregion
-
-    #region ForceZone
-
-    public class ForceZone : SpatialMapObject
-    {
-    }
-
-    [MapObjectSpec(typeof(ForceZone))]
-    public static class ForceZoneSpec
-    {
-        [MapObjectPrefab]
-        public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground");
-
-        [MapObjectSerializer]
-        public static void Serialize(GameObject instance, ForceZone target)
-        {
-            SpatialSerializer.Serialize(instance, target);
         }
 
-        [MapObjectDeserializer]
-        public static void Deserialize(ForceZone data, GameObject target)
+        [MapObjectSpec(typeof(Lava))]
+        public static class LavaSpec
         {
-            SpatialSerializer.Deserialize(data, target);
-            target.GetOrAddComponent<ForceZoneMono>();
+            [MapObjectPrefab]
+            public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground");
+
+            [MapObjectSerializer]
+            public static void Serialize(GameObject instance, Lava target)
+            {
+                SpatialSerializer.Serialize(instance, target);
+            }
+
+            [MapObjectDeserializer]
+            public static void Deserialize(Lava data, GameObject target)
+            {
+                SpatialSerializer.Deserialize(data, target);
+                target.GetOrAddComponent<LavaMono>();
+            }
         }
+
+        #endregion
+
+        #region Space
+
+        public class Space : SpatialMapObject
+        {
+        }
+
+        [MapObjectSpec(typeof(Space))]
+        public static class SpaceSpec
+        {
+            [MapObjectPrefab]
+            public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground");
+
+            [MapObjectSerializer]
+            public static void Serialize(GameObject instance, Space target)
+            {
+                SpatialSerializer.Serialize(instance, target);
+            }
+
+            [MapObjectDeserializer]
+            public static void Deserialize(Space data, GameObject target)
+            {
+                SpatialSerializer.Deserialize(data, target);
+                target.GetOrAddComponent<SpaceMono>();
+            }
+        }
+
+        #endregion
+
+        #region ForceZone
+
+        public class ForceZone : SpatialMapObject
+        {
+        }
+
+        [MapObjectSpec(typeof(ForceZone))]
+        public static class ForceZoneSpec
+        {
+            [MapObjectPrefab]
+            public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground");
+
+            [MapObjectSerializer]
+            public static void Serialize(GameObject instance, ForceZone target)
+            {
+                SpatialSerializer.Serialize(instance, target);
+            }
+
+            [MapObjectDeserializer]
+            public static void Deserialize(ForceZone data, GameObject target)
+            {
+                SpatialSerializer.Deserialize(data, target);
+                target.GetOrAddComponent<ForceZoneMono>();
+            }
+        }
+
+        #endregion
+
+        #endregion 
     }
-
-    #endregion
-
-    #endregion
 }

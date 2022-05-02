@@ -6,8 +6,17 @@ Adds 4 liquids to the map editor:
 - Acid
 - Space
 
-Add 1 new block
+Adds 1 new block
 - Force Zone
+
+### V 1.1.5
+- Fixed an issue with null reference errors being thrown.
+
+### V 1.1.4
+- Fixed issues with players having too much force applied to them.
+
+### V 1.1.3
+- Fixed an issue with object rendering outside of the editor.
 
 ### V 1.1.2
 - Fixed an issue with object rendering.

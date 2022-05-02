@@ -39,7 +39,10 @@ namespace WWMO.MonoBehaviours
 
         public override void HandlePlayer(Player player)
         {
-            player.data.healthHandler.CallTakeForce(new Vector2(this.transform.up.normalized.x * 4f, this.transform.up.normalized.y * 1f/2f) * forceMult * (float)player.data.playerVel.GetFieldValue("mass"));
+            if (player.data.view.IsMine)
+            {
+                player.data.healthHandler.CallTakeForce(new Vector2(this.transform.up.normalized.x * 4f, this.transform.up.normalized.y * 1f / 2f) * forceMult * (float)player.data.playerVel.GetFieldValue("mass"));
+            }
         }
 
         public override void HandleBox(Rigidbody2D rb)
@@ -258,11 +261,11 @@ namespace WWMO.MonoBehaviours
 
             var inSpace = data.gameObject.GetOrAddComponent<PlayerInSpace_Mono>();
 
-            if (!(data.isGrounded || data.isWallGrab))
+            if (!(data.isGrounded || data.isWallGrab) && player.data.view.IsMine)
             {
                 player.data.healthHandler.CallTakeForce(Vector2.up * 0.125f * (float)player.data.playerVel.GetFieldValue("mass"));
             }
-            else if (data.isGrounded)
+            else if (data.isGrounded && player.data.view.IsMine)
             {
                 player.data.healthHandler.CallTakeForce(Vector2.down * 0.125f * (float)player.data.playerVel.GetFieldValue("mass"));
             }
@@ -324,12 +327,30 @@ namespace WWMO.MonoBehaviours
             //var rigid = gameObject.GetOrAddComponent<Rigidbody2D>();
             //rigid.isKinematic = true;
             //rigid.useFullKinematicContacts = true;
+            gameObject.GetOrAddComponent<RectTransform>();
 
+            UnityEngine.GameObject.Destroy(gameObject.GetComponent<SpriteMask>());
             gameObject.GetOrAddComponent<SpriteRenderer>().material = WillsWackyMapObjects.defaultMaterial;
 
             gameObject.GetOrAddComponent<SpriteRenderer>().color = waterColor;
 
-            gameObject.GetOrAddComponent<RectTransform>();
+            WillsWackyMapObjects.instance.ExecuteAfterFrames(1, () => 
+            {
+                UnityEngine.GameObject.Destroy(gameObject.GetComponent<SpriteMask>());
+                var sprite = gameObject.GetOrAddComponent<SpriteRenderer>();
+
+                sprite.material = WillsWackyMapObjects.defaultMaterial;
+                sprite.color = waterColor;
+            });
+            UnityEngine.GameObject.Destroy(gameObject.GetComponent<SpriteMask>());
+            WillsWackyMapObjects.instance.ExecuteAfterFrames(5, () =>
+            {
+                UnityEngine.GameObject.Destroy(gameObject.GetComponent<SpriteMask>());
+                var sprite = gameObject.GetOrAddComponent<SpriteRenderer>();
+
+                sprite.material = WillsWackyMapObjects.defaultMaterial;
+                sprite.color = waterColor;
+            });
 
             //trail = this.gameObject.AddComponent<TrailRenderer>();
             //trail.startColor = waterColor;
@@ -444,7 +465,10 @@ namespace WWMO.MonoBehaviours
             data.currentJumps = data.jumps;
             var inWater = data.gameObject.GetOrAddComponent<PlayerInWater_Mono>();
 
-            player.data.healthHandler.CallTakeForce(Vector2.up * 0.15f * (float)player.data.playerVel.GetFieldValue("mass"), ForceMode2D.Impulse);
+            if (player.data.view.IsMine)
+            {
+                player.data.healthHandler.CallTakeForce(Vector2.up * 0.15f * (float)player.data.playerVel.GetFieldValue("mass"), ForceMode2D.Impulse);
+            }
 
             inWater.hadWater = new bool[] { true, true };
         }
@@ -585,6 +609,15 @@ namespace WWMO.MonoBehaviours
     public class PlayerInWater_Mono : ModdingUtils.MonoBehaviours.ReversibleEffect
     {
         public bool[] hadWater = new bool[] { true, true };
+
+        public override void OnAwake()
+        {
+            if (!this.gameObject.GetComponent<Player>())
+            {
+                UnityEngine.GameObject.Destroy(this);
+            }
+        }
+
         public override void OnStart()
         {
             characterStatModifiersModifier.jump_mult = 0.2f;
@@ -600,7 +633,7 @@ namespace WWMO.MonoBehaviours
         {
             if (hadWater[0] == false && hadWater[0] == hadWater[1])
             {
-                Destroy(this);
+                UnityEngine.GameObject.Destroy(this);
             }
             else
             {
@@ -694,6 +727,14 @@ namespace WWMO.MonoBehaviours
         public bool[] inSpace = new bool[] { true, true };
         private float initialDrag;
         private float initialAngularDrag;
+        public override void OnAwake()
+        {
+            if (!gameObject.GetComponentInParent<Player>())
+            {
+                UnityEngine.GameObject.Destroy(this);
+            }
+        }
+
         public override void OnStart()
         {
             characterStatModifiersModifier.jump_mult = 0.25f;

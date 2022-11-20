@@ -360,6 +360,29 @@ namespace WWMO.MonoBehaviours
             //trail.endWidth = 0.025f;
         }
 
+        void DisplayWorldCorners()
+        {
+            RectTransform rt = GetComponent<RectTransform>();
+            Vector3[] v = new Vector3[4];
+            rt.GetWorldCorners(v);
+
+            UnityEngine.Debug.Log("World Corners");
+            for (var i = 0; i < 4; i++)
+            {
+                UnityEngine.Debug.Log("World Corner " + i + " : " + v[i]);
+            }
+        }
+
+        //private void OnTriggerEnter2D(Collider2D collider)
+        //{
+        //    //if (collider == this.gameObject.GetComponent<Collider2D>())
+        //    //{
+        //    //    return;
+        //    //}
+
+        //    HandleCollision(collider);
+        //}
+
         //private void OnTriggerStay2D(Collider2D collider)
         //{
         //    //if (collider == this.gameObject.GetComponent<Collider2D>())
@@ -414,7 +437,7 @@ namespace WWMO.MonoBehaviours
 
             hits = tempHits.ToArray();
 
-            var colliders = Physics2D.OverlapBoxAll(transform.position, gameObject.GetComponent<RectTransform>().localScale, Vector2.SignedAngle(Vector2.up, transform.up.normalized));
+            var colliders = Physics2D.OverlapBoxAll(transform.position, gameObject.GetComponent<RectTransform>().lossyScale, Vector2.SignedAngle(Vector2.up, transform.up.normalized));
 
             foreach (var collider in colliders)
             {
@@ -631,6 +654,11 @@ namespace WWMO.MonoBehaviours
 
         public override void OnFixedUpdate()
         {
+            if (!player)
+            {
+                return;
+            }
+
             if (hadWater[0] == false && hadWater[0] == hadWater[1])
             {
                 UnityEngine.GameObject.Destroy(this);
@@ -649,7 +677,7 @@ namespace WWMO.MonoBehaviours
 
             if (player.data.playerActions.Jump.IsPressed)
             {
-                data.jump.Jump();
+                player.data.jump.Jump();
             }
         }
 
@@ -813,21 +841,35 @@ namespace WWMO.MonoBehaviours
 
     public class BoxTouchingLava_Mono : MonoBehaviour
     {
-        SpriteRenderer boxSprite;
+        class SpriteColors
+        {
+            public SpriteRenderer sprite;
+            public Color initialColor;
+
+            public SpriteColors(SpriteRenderer renderer, Color color)
+            {
+                sprite = renderer;
+                initialColor = color;
+            }
+        }
+
+        SpriteColors[] boxSprites;
         float heatDuration = 5f;
-        Color initialColor;
         Color heatedColor = new Color(1f, 0f, 0f, 0.7f);
         public float heatPercent;
 
         private void Start()
         {
-            boxSprite = GetComponent<SpriteRenderer>();
-            initialColor = boxSprite.color;
+            boxSprites = GetComponentsInChildren<SpriteRenderer>().Where(sr => sr.gameObject.name != "Lines").Select(sr => new SpriteColors(sr, sr.color)).ToArray();
         }
 
         private void Update()
         {
-            boxSprite.color = new Color(initialColor.r + (heatedColor.r - initialColor.r) * heatPercent, initialColor.g + (heatedColor.g - initialColor.g) * heatPercent, initialColor.b + (heatedColor.b - initialColor.b) * heatPercent, initialColor.a + (heatedColor.a - initialColor.a) * heatPercent);
+            foreach (var sr in boxSprites)
+            {
+                Color initialColor = sr.initialColor;
+                sr.sprite.color = new Color(initialColor.r + (heatedColor.r - initialColor.r) * heatPercent, initialColor.g + (heatedColor.g - initialColor.g) * heatPercent, initialColor.b + (heatedColor.b - initialColor.b) * heatPercent, initialColor.a + (heatedColor.a - initialColor.a) * heatPercent);
+            }
 
             if (heatPercent <= 0f)
             {
@@ -854,7 +896,11 @@ namespace WWMO.MonoBehaviours
 
         private void OnDestroy()
         {
-            boxSprite.color = initialColor;
+            foreach (var sr in boxSprites)
+            {
+                Color initialColor = sr.sprite.color;
+                sr.sprite.color = sr.initialColor;
+            }
         }
     }
 }

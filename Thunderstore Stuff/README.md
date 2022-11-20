@@ -9,6 +9,10 @@ Adds 4 liquids to the map editor:
 Adds 1 new block
 - Force Zone
 
+### V 1.1.6
+- Fixed an issue with map embiggener scaling and object behaviors.
+- Hot Blocks now properly glow.
+
 ### V 1.1.5
 - Fixed an issue with null reference errors being thrown.
 

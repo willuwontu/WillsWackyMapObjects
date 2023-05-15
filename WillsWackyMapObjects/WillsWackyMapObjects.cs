@@ -17,7 +17,7 @@ namespace WWMO
     {
         private const string ModId = "com.willuwontu.rounds.MapObjects";
         private const string ModName = "Will's Wacky Map Objects";
-        public const string Version = "1.1.6"; // What version are we on (major.minor.patch)?
+        public const string Version = "1.1.7"; // What version are we on (major.minor.patch)?
 
         public static WillsWackyMapObjects instance { get; private set; }
 
@@ -38,9 +38,6 @@ namespace WWMO
             instance = this;
 
             MapObjectAssets = AssetUtils.LoadAssetBundleFromResources("wwmo", typeof(WillsWackyMapObjects).Assembly);
-
-            var assembly = Assembly.GetCallingAssembly();
-            this.ExecuteAfterSeconds(0.1f, () => { MapsExtended.instance.RegisterMapObjectsAction?.Invoke(assembly); });
         }
     }
 }

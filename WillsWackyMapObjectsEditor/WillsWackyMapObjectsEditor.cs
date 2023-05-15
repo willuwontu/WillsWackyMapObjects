@@ -15,7 +15,7 @@ namespace WWMOE
     {
         private const string ModId = "com.willuwontu.rounds.MapObjectsEditor";
         private const string ModName = "Will's Wacky Map Objects Editor";
-        public const string Version = "1.1.5"; // What version are we on (major.minor.patch)?
+        public const string Version = "1.1.6"; // What version are we on (major.minor.patch)?
 
         public static WillsWackyMapObjectsEditor instance { get; private set; }
 
@@ -30,9 +30,6 @@ namespace WWMOE
             Unbound.RegisterCredits(ModName, new string[] { "willuwontu" }, new string[] { "github", "Ko-Fi" }, new string[] { "https://github.com/willuwontu/WillsWackyMapObjects", "https://ko-fi.com/willuwontu" });
 
             instance = this;
-
-            var assembly = Assembly.GetCallingAssembly();
-            this.ExecuteAfterSeconds(0.1f, () => { MapsExtended.instance.RegisterMapObjectsAction?.Invoke(assembly); });
         }
     }
 }

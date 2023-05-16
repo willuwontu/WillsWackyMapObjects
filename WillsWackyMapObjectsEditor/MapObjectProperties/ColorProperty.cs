@@ -26,7 +26,6 @@ namespace WWMO.MapObjectProperties
             {
                 LineRenderer lineRenderer = instance.GetComponentInChildren<LineRenderer>();
                 color = lineRenderer.endColor;
-                UnityEngine.Debug.Log(color);
             }
 
             ColorProperty colorProperty = new ColorProperty(color);

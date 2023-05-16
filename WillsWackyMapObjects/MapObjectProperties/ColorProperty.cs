@@ -41,7 +41,6 @@ namespace WWMO.MapObjectProperties
             foreach (SpriteRenderer spriteRenderer in target.GetComponentsInChildren<SpriteRenderer>())
             {
                 spriteRenderer.color = property;
-                //WillsWackyMapObjects.instance.StartCoroutine(SetColor(property, spriteRenderer));
             }
 
             foreach (LineRenderer lineRenderer in target.GetComponentsInChildren<LineRenderer>())

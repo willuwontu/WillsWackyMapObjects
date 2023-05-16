@@ -1,8 +1,8 @@
 ﻿using MapsExt;
 using MapsExt.Editor.MapObjects;
-using MapsExt.Visualizers;
 using UnboundLib;
 using UnityEngine;
+using WillsWackyMapObjectsEditor.Visualizers;
 using WWMO.MapObjects;
 
 namespace WillsWackyMapObjectsEditor.MapObjects
@@ -18,7 +18,7 @@ namespace WillsWackyMapObjectsEditor.MapObjects
             var ropeInstance = instance.GetOrAddComponent<EditorRope.RopeInstance>();
             ropeInstance.GetAnchor(0).gameObject.GetOrAddComponent<MapObjectPart>();
             ropeInstance.GetAnchor(1).gameObject.GetOrAddComponent<MapObjectPart>();
-            instance.GetOrAddComponent<RopeVisualizer>();
+            instance.GetOrAddComponent<ColoredRopeVisualizer>();
         }
     }
 }

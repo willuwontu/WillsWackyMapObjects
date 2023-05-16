@@ -17,7 +17,7 @@ namespace WWMO
     {
         private const string ModId = "com.willuwontu.rounds.MapObjects";
         private const string ModName = "Will's Wacky Map Objects";
-        public const string Version = "1.1.7"; // What version are we on (major.minor.patch)?
+        public const string Version = "1.2.0"; // What version are we on (major.minor.patch)?
 
         public static WillsWackyMapObjects instance { get; private set; }
 

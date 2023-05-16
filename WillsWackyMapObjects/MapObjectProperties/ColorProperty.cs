@@ -43,15 +43,12 @@ namespace WWMO.MapObjectProperties
                 spriteRenderer.color = property;
                 //WillsWackyMapObjects.instance.StartCoroutine(SetColor(property, spriteRenderer));
             }
-        }
 
-        public IEnumerator SetColor(Color color, SpriteRenderer spriteRenderer)
-        {
-            yield return null;
-
-            spriteRenderer.color = color;
-
-            yield break;
+            foreach (LineRenderer lineRenderer in target.GetComponentsInChildren<LineRenderer>())
+            {
+                lineRenderer.startColor = property;
+                lineRenderer.endColor = property;
+            }
         }
     }
 }

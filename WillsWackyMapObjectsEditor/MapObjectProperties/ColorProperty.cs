@@ -13,7 +13,21 @@ namespace WWMO.MapObjectProperties
     {
         public ColorProperty ReadProperty(GameObject instance)
         {
-            var color = instance.GetComponentInChildren<SpriteRenderer>().color;
+            var spriteRenderer = instance.GetComponentInChildren<SpriteRenderer>();
+
+            Color color = new Color32(55,55,55, 225);
+
+            if (spriteRenderer != null )
+            {
+                color = spriteRenderer.color;
+            }
+
+            if (spriteRenderer == null && instance.GetComponentInChildren<LineRenderer>())
+            {
+                LineRenderer lineRenderer = instance.GetComponentInChildren<LineRenderer>();
+                color = lineRenderer.endColor;
+                UnityEngine.Debug.Log(color);
+            }
 
             ColorProperty colorProperty = new ColorProperty(color);
 

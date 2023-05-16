@@ -6,7 +6,7 @@ using UnboundLib;
 
 namespace WWMO.MapObjects
 {
-    public class AcidData : NonAnimatedSpatialMapObjectData { }
+    public class AcidData : LiquidMapObjectData { }
 
     [MapObject(typeof(AcidData))]
     public class Acid : IMapObject

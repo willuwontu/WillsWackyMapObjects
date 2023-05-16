@@ -8,21 +8,23 @@ using UnityEngine;
 
 namespace WWMO.MapObjectProperties
 {
-    [EditorPropertySerializer(typeof(ColorProperty))]
-    public class EditorColorPropertySerializer : ColorPropertySerializer, IPropertyReader<ColorProperty>
+    [EditorPropertySerializer(typeof(ParticleColorProperty))]
+    public class EditorParticleColorPropertySerializer : ParticleColorPropertySerializer, IPropertyReader<ParticleColorProperty>
     {
-        public ColorProperty ReadProperty(GameObject instance)
+        public ParticleColorProperty ReadProperty(GameObject instance)
         {
-            var color = instance.GetComponentInChildren<SpriteRenderer>().color;
+            var main = instance.GetComponentInChildren<ParticleSystem>().main;
 
-            ColorProperty colorProperty = new ColorProperty(color);
+            var color = main.startColor.colorMax;
+
+            ParticleColorProperty colorProperty = new ParticleColorProperty(color);
 
             return colorProperty;
         }
     }
 
-    [InspectorElement(typeof(ColorProperty))]
-    public class ColorElement : InspectorElement
+    [InspectorElement(typeof(ParticleColorProperty))]
+    public class ParticleColorElement : InspectorElement
     {
         private TextSliderInput _r;
         private TextSliderInput _g;
@@ -31,7 +33,7 @@ namespace WWMO.MapObjectProperties
 
         public Color Value
         {
-            get => this.Context.InspectorTarget.ReadProperty<ColorProperty>();
+            get => this.Context.InspectorTarget.ReadProperty<ParticleColorProperty>();
             set => this.OnChange(value, ChangeType.ChangeEnd);
         }
 
@@ -39,7 +41,7 @@ namespace WWMO.MapObjectProperties
         {
             var instance = GameObject.Instantiate(Assets.FoldoutPrefab);
             var foldout = instance.GetComponent<Foldout>();
-            foldout.Label.text = "Color";
+            foldout.Label.text = "Particle Color";
 
             var r = GameObject.Instantiate(Assets.InspectorSliderInputPrefab, foldout.Content.transform);
             var quaternionInput = r.GetComponent<InspectorSliderInput>();
@@ -92,7 +94,7 @@ namespace WWMO.MapObjectProperties
         {
             if (changeType == ChangeType.Change || changeType == ChangeType.ChangeEnd)
             {
-                this.Context.InspectorTarget.WriteProperty<ColorProperty>((Color32)color);
+                this.Context.InspectorTarget.WriteProperty<ParticleColorProperty>((Color32)color);
             }
 
             if (changeType == ChangeType.ChangeEnd)
@@ -105,7 +107,7 @@ namespace WWMO.MapObjectProperties
         {
             if (changeType == ChangeType.Change || changeType == ChangeType.ChangeEnd)
             {
-                this.Context.InspectorTarget.WriteProperty<ColorProperty>((Color32)new Color(this._r.Value /255, this._g.Value /255, this._b.Value /255, this._a.Value /255));
+                this.Context.InspectorTarget.WriteProperty<ParticleColorProperty>((Color32)new Color(this._r.Value /255, this._g.Value /255, this._b.Value /255, this._a.Value /255));
             }
 
             if (changeType == ChangeType.ChangeEnd)

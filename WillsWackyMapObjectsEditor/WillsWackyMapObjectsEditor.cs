@@ -5,7 +5,7 @@ using HarmonyLib;
 using MapsExt;
 using UnboundLib;
 
-namespace WWMOE
+namespace WWMO
 {
     [BepInDependency("com.willis.rounds.unbound", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("pykess.rounds.plugins.moddingutils", BepInDependency.DependencyFlags.HardDependency)]

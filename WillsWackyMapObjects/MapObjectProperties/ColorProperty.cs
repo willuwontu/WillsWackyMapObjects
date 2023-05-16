@@ -1,5 +1,5 @@
 ﻿using MapsExt.Properties;
-using System.Runtime.CompilerServices;
+using System.Collections;
 using UnityEngine;
 
 namespace WWMO.MapObjectProperties
@@ -13,7 +13,7 @@ namespace WWMO.MapObjectProperties
 
         public override Color Value => new Color32((byte)this._r, (byte)this._g, (byte)this._b, (byte)this._a);
 
-        public ColorProperty() : this(100, 100, 100, 255) { }
+        public ColorProperty() : this(67, 55, 43, 225) { }
 
         public ColorProperty(Color color) : this(Mathf.RoundToInt(color.r * 255), Mathf.RoundToInt(color.g * 255), Mathf.RoundToInt(color.b * 255), Mathf.RoundToInt(color.a * 255)) { }
 
@@ -40,8 +40,18 @@ namespace WWMO.MapObjectProperties
         {
             foreach (SpriteRenderer spriteRenderer in target.GetComponentsInChildren<SpriteRenderer>())
             {
-                spriteRenderer.color = property.Value;
+                spriteRenderer.color = property;
+                //WillsWackyMapObjects.instance.StartCoroutine(SetColor(property, spriteRenderer));
             }
+        }
+
+        public IEnumerator SetColor(Color color, SpriteRenderer spriteRenderer)
+        {
+            yield return null;
+
+            spriteRenderer.color = color;
+
+            yield break;
         }
     }
 }

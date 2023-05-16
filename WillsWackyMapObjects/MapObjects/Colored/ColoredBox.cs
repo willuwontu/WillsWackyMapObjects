@@ -19,6 +19,14 @@ namespace WWMO.MapObjects
             {
                 UnityEngine.GameObject.Destroy(lineTransform.gameObject);
             }
+
+            GetColor[] getColors = instance.GetComponentsInChildren<GetColor>();
+
+
+            for (int i = getColors.Length - 1; i >= 0; i--)
+            {
+                UnityEngine.GameObject.DestroyImmediate(getColors[i]);
+            }
         }
     }
 }

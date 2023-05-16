@@ -24,7 +24,13 @@ namespace WWMO.MapObjects
 
         public virtual void OnInstantiate(GameObject instance)
         {
+            GetColor[] getColors = instance.GetComponentsInChildren<GetColor>();
 
+
+            for (int i = getColors.Length - 1; i >= 0; i--)
+            {
+                UnityEngine.GameObject.DestroyImmediate(getColors[i]);
+            }
         }
     }
 }

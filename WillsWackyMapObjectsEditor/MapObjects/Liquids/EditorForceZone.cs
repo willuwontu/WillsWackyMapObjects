@@ -7,7 +7,7 @@ using WWMO.MapObjects;
 namespace WillsWackyMapObjectsEditor.MapObjects
 {
     [EditorMapObject(typeof(ForceZoneData), "Force Zone", Category = "Liquids")]
-    public class EditorForceZone : ForceZone
+    public class EditorForceZone : ForceZoneMapObject
     {
 
     }

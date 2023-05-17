@@ -6,16 +6,16 @@ using UnboundLib;
 
 namespace WWMO.MapObjects
 {
-    public class ForceZoneData : LiquidMapObjectData { }
+    public class WaterData : LiquidMapObjectData { }
 
-    [MapObject(typeof(ForceZoneData))]
-    public class ForceZone : IMapObject
+    [MapObject(typeof(WaterData))]
+    public class WaterMapObject : IMapObject
     {
         public virtual GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground");
 
         public virtual void OnInstantiate(GameObject instance)
         {
-            instance.GetOrAddComponent<ForceZoneMono>();
+            instance.GetOrAddComponent<WaterMono>();
         }
     }
 }

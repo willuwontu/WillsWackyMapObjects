@@ -7,7 +7,7 @@ using WWMO.MapObjects;
 namespace WillsWackyMapObjectsEditor.MapObjects
 {
     [EditorMapObject(typeof(WaterData), "Water", Category = "Liquids")]
-    public class EditorWater : Water
+    public class EditorWater : WaterMapObject
     {
 
     }

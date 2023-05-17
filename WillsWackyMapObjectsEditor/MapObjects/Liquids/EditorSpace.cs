@@ -7,7 +7,7 @@ using WWMO.MapObjects;
 namespace WillsWackyMapObjectsEditor.MapObjects
 {
     [EditorMapObject(typeof(SpaceData), "Space", Category = "Liquids")]
-    public class EditorSpace : Space
+    public class EditorSpace : SpaceMapObject
     {
 
     }

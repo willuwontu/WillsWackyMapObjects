@@ -6,16 +6,16 @@ using UnboundLib;
 
 namespace WWMO.MapObjects
 {
-    public class SpaceData : LiquidMapObjectData { }
+    public class LavaData : LiquidMapObjectData { }
 
-    [MapObject(typeof(SpaceData))]
-    public class Space : IMapObject
+    [MapObject(typeof(LavaData))]
+    public class LavaMapObject : IMapObject
     {
         public virtual GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground");
 
         public virtual void OnInstantiate(GameObject instance)
         {
-            instance.GetOrAddComponent<SpaceMono>();
+            instance.GetOrAddComponent<LavaMono>();
         }
     }
 }

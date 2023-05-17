@@ -1,151 +1,111 @@
 ﻿using System;
 using MapsExt;
+using MapsExt.Compatibility;
 using MapsExt.MapObjects;
+using MapsExt.Properties;
 using UnboundLib;
 using UnityEngine;
 using WWMO.MonoBehaviours;
 
 namespace WWMO.MapObjects
 {
-		#region Liquids
-        #region Water
-        public class Water : SpatialMapObject
+    #region Liquids
+    #region Water
+    [Obsolete("Legacy map object")]
+    public class Water : IUpgradable<MapObjectData>
+    {
+        public Vector3 position;
+        public Vector3 scale;
+        public Quaternion rotation;
+
+        public MapObjectData Upgrade()
         {
+            WaterData data = new WaterData();
+            data.Position = this.position;
+            data.Scale = this.scale;
+            data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
+            return data;
         }
+    }
 
-        [MapObjectSpec(typeof(Water))]
-        public static class WaterSpec
+    #endregion
+
+    #region Acid
+    [Obsolete("Legacy map object")]
+    public class Acid : IUpgradable<MapObjectData>
+    {
+        public Vector3 position;
+        public Vector3 scale;
+        public Quaternion rotation;
+        public MapObjectData Upgrade()
         {
-            [MapObjectPrefab]
-            public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground");
-
-            [MapObjectSerializer]
-            public static void Serialize(GameObject instance, Water target)
-            {
-                SpatialSerializer.Serialize(instance, target);
-            }
-
-            [MapObjectDeserializer]
-            public static void Deserialize(Water data, GameObject target)
-            {
-                SpatialSerializer.Deserialize(data, target);
-                target.GetOrAddComponent<WaterMono>();
-            }
+            AcidData data = new AcidData();
+            data.Position = this.position;
+            data.Scale = this.scale;
+            data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
+            return data;
         }
+    }
 
-        #endregion
+    #endregion
 
-        #region Acid
-
-        public class Acid : SpatialMapObject
+    #region Lava
+    [Obsolete("Legacy map object")]
+    public class Lava : IUpgradable<MapObjectData>
+    {
+        public Vector3 position;
+        public Vector3 scale;
+        public Quaternion rotation;
+        public MapObjectData Upgrade()
         {
+            LavaData data = new LavaData();
+            data.Position = this.position;
+            data.Scale = this.scale;
+            data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
+            return data;
         }
+    }
 
-        [MapObjectSpec(typeof(Acid))]
-        public static class AcidSpec
+    #endregion
+
+    #region Space
+    [Obsolete("Legacy map object")]
+    public class Space : IUpgradable<MapObjectData>
+    {
+        public Vector3 position;
+        public Vector3 scale;
+        public Quaternion rotation;
+        public MapObjectData Upgrade()
         {
-            [MapObjectPrefab]
-            public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground");
-
-            [MapObjectSerializer]
-            public static void Serialize(GameObject instance, Acid target)
-            {
-                SpatialSerializer.Serialize(instance, target);
-            }
-
-            [MapObjectDeserializer]
-            public static void Deserialize(Acid data, GameObject target)
-            {
-                SpatialSerializer.Deserialize(data, target);
-                target.GetOrAddComponent<AcidMono>();
-            }
+            SpaceData data = new SpaceData();
+            data.Position = this.position;
+            data.Scale = this.scale;
+            data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
+            return data;
         }
+    }
 
-        #endregion
+    #endregion
 
-        #region Lava
+    #region ForceZone
 
-        public class Lava : SpatialMapObject
+    [Obsolete("Legacy map object")]
+    public class ForceZone : IUpgradable<MapObjectData>
+    {
+        public Vector3 position;
+        public Vector3 scale;
+        public Quaternion rotation;
+        public MapObjectData Upgrade()
         {
+            ForceZoneData data = new ForceZoneData();
+            data.Position = this.position;
+            data.Scale = this.scale;
+            data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
+            return data;
         }
+    }
 
-        [MapObjectSpec(typeof(Lava))]
-        public static class LavaSpec
-        {
-            [MapObjectPrefab]
-            public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground");
+    #endregion
 
-            [MapObjectSerializer]
-            public static void Serialize(GameObject instance, Lava target)
-            {
-                SpatialSerializer.Serialize(instance, target);
-            }
-
-            [MapObjectDeserializer]
-            public static void Deserialize(Lava data, GameObject target)
-            {
-                SpatialSerializer.Deserialize(data, target);
-                target.GetOrAddComponent<LavaMono>();
-            }
-        }
-
-        #endregion
-
-        #region Space
-
-        public class Space : SpatialMapObject
-        {
-        }
-
-        [MapObjectSpec(typeof(Space))]
-        public static class SpaceSpec
-        {
-            [MapObjectPrefab]
-            public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground");
-
-            [MapObjectSerializer]
-            public static void Serialize(GameObject instance, Space target)
-            {
-                SpatialSerializer.Serialize(instance, target);
-            }
-
-            [MapObjectDeserializer]
-            public static void Deserialize(Space data, GameObject target)
-            {
-                SpatialSerializer.Deserialize(data, target);
-                target.GetOrAddComponent<SpaceMono>();
-            }
-        }
-
-        #endregion
-
-        #region ForceZone
-
-        public class ForceZone : SpatialMapObject
-        {
-        }
-
-        [MapObjectSpec(typeof(ForceZone))]
-        public static class ForceZoneSpec
-        {
-            [MapObjectPrefab]
-            public static GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Ground");
-
-            [MapObjectSerializer]
-            public static void Serialize(GameObject instance, ForceZone target)
-            {
-                SpatialSerializer.Serialize(instance, target);
-            }
-
-            [MapObjectDeserializer]
-            public static void Deserialize(ForceZone data, GameObject target)
-            {
-                SpatialSerializer.Deserialize(data, target);
-                target.GetOrAddComponent<ForceZoneMono>();
-            }
-        }
-
-        #endregion
-
-        #endregion 
+    #endregion 
 }

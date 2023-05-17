@@ -7,7 +7,7 @@ using WWMO.MapObjects;
 namespace WillsWackyMapObjectsEditor.MapObjects
 {
     [EditorMapObject(typeof(LavaData), "Lava", Category = "Liquids")]
-    public class EditorLava : Lava
+    public class EditorLava : LavaMapObject
     {
 
     }

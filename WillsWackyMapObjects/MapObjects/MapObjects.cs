@@ -5,6 +5,7 @@ using MapsExt.MapObjects;
 using MapsExt.Properties;
 using UnboundLib;
 using UnityEngine;
+using UnityEngine.Serialization;
 using WWMO.MonoBehaviours;
 
 namespace WWMO.MapObjects
@@ -14,6 +15,7 @@ namespace WWMO.MapObjects
     [Obsolete("Legacy map object")]
     public class Water : IUpgradable<MapObjectData>
     {
+        [FormerlySerializedAs("_active")]
         public bool active;
         public Vector3 position;
         public Vector3 scale;
@@ -36,6 +38,7 @@ namespace WWMO.MapObjects
     [Obsolete("Legacy map object")]
     public class Acid : IUpgradable<MapObjectData>
     {
+        [FormerlySerializedAs("_active")]
         public bool active;
         public Vector3 position;
         public Vector3 scale;
@@ -57,6 +60,7 @@ namespace WWMO.MapObjects
     [Obsolete("Legacy map object")]
     public class Lava : IUpgradable<MapObjectData>
     {
+        [FormerlySerializedAs("_active")]
         public bool active;
         public Vector3 position;
         public Vector3 scale;
@@ -78,6 +82,7 @@ namespace WWMO.MapObjects
     [Obsolete("Legacy map object")]
     public class Space : IUpgradable<MapObjectData>
     {
+        [FormerlySerializedAs("_active")]
         public bool active;
         public Vector3 position;
         public Vector3 scale;
@@ -100,6 +105,7 @@ namespace WWMO.MapObjects
     [Obsolete("Legacy map object")]
     public class ForceZone : IUpgradable<MapObjectData>
     {
+        [FormerlySerializedAs("_active")]
         public bool active;
         public Vector3 position;
         public Vector3 scale;

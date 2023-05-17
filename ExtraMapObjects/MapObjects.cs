@@ -5,6 +5,7 @@ using MapsExt.MapObjects;
 using MapsExt.Properties;
 using UnboundLib;
 using UnityEngine;
+using UnityEngine.Serialization;
 using WWMO.MapObjects;
 
 namespace ExtraMapObjects
@@ -16,6 +17,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class Red : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -38,6 +40,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class Green : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -60,6 +63,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class Blue : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -82,6 +86,12 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class Yellow : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
+            public bool active;
+            public Vector3 position;
+            public Vector3 scale;
+            public Quaternion rotation;
+
             public MapObjectData Upgrade()
             {
                 ColoredGroundData data = new ColoredGroundData();
@@ -99,6 +109,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class Purple : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -121,6 +132,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class Orange : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -143,6 +155,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class Brown : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -165,6 +178,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class Pink : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -187,6 +201,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class Cyan : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -209,6 +224,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class Black : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -231,6 +247,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class White : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -253,6 +270,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class Grey : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -279,6 +297,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class RedPhys : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -301,6 +320,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class GreenPhys : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -323,6 +343,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class BluePhys : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -345,6 +366,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class YellowPhys : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -367,6 +389,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class PurplePhys : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -389,6 +412,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class OrangePhys : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -411,6 +435,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class BrownPhys : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -433,6 +458,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class PinkPhys : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -455,6 +481,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class CyanPhys : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -477,6 +504,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class BlackPhys : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -499,6 +527,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class WhitePhys : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -521,6 +550,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class GreyPhys : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -548,6 +578,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class RedPhysBackg : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -571,6 +602,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class GreenPhysBackg : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -594,6 +626,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class BluePhysBackg : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -617,6 +650,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class YellowPhysBackg : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -640,6 +674,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class PurplePhysBackg : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -663,6 +698,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class OrangePhysBackg : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -686,6 +722,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class BrownPhysBackg : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -709,6 +746,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class PinkPhysBackg : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -732,6 +770,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class CyanPhysBackg : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -755,6 +794,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class BlackPhysBackg : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -778,6 +818,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class WhitePhysBackg : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;
@@ -801,6 +842,7 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class GreyPhysBackg : IUpgradable<MapObjectData>
         {
+            [FormerlySerializedAs("_active")]
             public bool active;
             public Vector3 position;
             public Vector3 scale;

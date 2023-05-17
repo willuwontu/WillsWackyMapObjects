@@ -95,6 +95,9 @@ namespace ExtraMapObjects
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = Color.red * 0.8f;
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }
@@ -130,6 +133,9 @@ namespace ExtraMapObjects
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = Color.green * 0.8f;
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }
@@ -165,6 +171,9 @@ namespace ExtraMapObjects
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = Color.blue * 0.8f;
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }
@@ -192,19 +201,17 @@ namespace ExtraMapObjects
         [Obsolete("Legacy map object")]
         public class Yellow : SpatialMapObject, IUpgradable<MapObjectData>
         {
-            public bool active;
-            public Vector3 position;
-            public Vector3 scale;
-            public Quaternion rotation;
-
             public MapObjectData Upgrade()
             {
                 ColoredGroundData data = new ColoredGroundData();
-                data.Active = active;
+                data.Active = true;
                 data.Position = this.position;
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = Color.yellow * 0.8f;
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }
@@ -240,6 +247,9 @@ namespace ExtraMapObjects
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = new Color(0.5f, 0f, 0.9f);
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }
@@ -275,6 +285,9 @@ namespace ExtraMapObjects
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = new Color(1f, 0.5f, 0f) * 0.8f;
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }
@@ -310,6 +323,9 @@ namespace ExtraMapObjects
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = new Color(0.5f, 0.25f, 0f);
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }
@@ -345,6 +361,9 @@ namespace ExtraMapObjects
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = new Color(0.9f, 0.4f, 0.7f);
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }
@@ -380,6 +399,9 @@ namespace ExtraMapObjects
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = new Color(0.1f, 0.8f, 0.8f) * 0.8f;
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }
@@ -415,6 +437,9 @@ namespace ExtraMapObjects
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = new Color(0, 0, 0);
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }
@@ -450,6 +475,9 @@ namespace ExtraMapObjects
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = new Color(1f, 1f, 1f) * 0.8f;
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }
@@ -485,6 +513,9 @@ namespace ExtraMapObjects
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = new Color(0.4f, 0.4f, 0.4f);
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }
@@ -523,6 +554,9 @@ namespace ExtraMapObjects
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = Color.red * 0.8f;
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }
@@ -558,6 +592,9 @@ namespace ExtraMapObjects
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = Color.green * 0.8f;
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }
@@ -593,6 +630,9 @@ namespace ExtraMapObjects
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = Color.blue * 0.8f;
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }
@@ -629,6 +669,9 @@ namespace ExtraMapObjects
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = Color.yellow * 0.8f;
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }
@@ -664,6 +707,9 @@ namespace ExtraMapObjects
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = new Color(0.5f, 0f, 0.9f);
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }
@@ -699,6 +745,9 @@ namespace ExtraMapObjects
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = new Color(1f, 0.5f, 0f) * 0.8f;
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }
@@ -734,6 +783,9 @@ namespace ExtraMapObjects
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = new Color(0.5f, 0.25f, 0f);
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }
@@ -769,6 +821,9 @@ namespace ExtraMapObjects
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = new Color(0.9f, 0.4f, 0.7f);
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }
@@ -804,6 +859,9 @@ namespace ExtraMapObjects
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = new Color(0.1f, 0.8f, 0.8f) * 0.8f;
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }
@@ -839,6 +897,9 @@ namespace ExtraMapObjects
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = new Color(0, 0, 0);
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }
@@ -874,6 +935,9 @@ namespace ExtraMapObjects
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = new Color(1f, 1f, 1f) * 0.8f;
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }
@@ -909,6 +973,9 @@ namespace ExtraMapObjects
                 data.Scale = this.scale;
                 data.Rotation = new RotationProperty(this.rotation.eulerAngles.z);
                 data.Color = new Color(0.4f, 0.4f, 0.4f);
+                Color color = data.Color;
+                color.a = 1;
+                data.Color = color;
                 return data;
             }
         }

@@ -18,7 +18,7 @@ namespace WWMO.MapObjects
             //UnityEngine.GameObject.DestroyImmediate(spriteRenderer);
 
             SpriteMask mask = instance.GetComponent<SpriteMask>();
-            UnityEngine.GameObject.DestroyImmediate(mask);
+            UnityEngine.GameObject.Destroy(mask);
 
             var box = MapObjectManager.LoadCustomAsset<GameObject>("Box");
             var color = box.transform.Find("Color");

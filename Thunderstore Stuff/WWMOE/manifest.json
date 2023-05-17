@@ -1,7 +1,7 @@
 {
 	"name":"WillsWackyMapObjectsEditor",
 	"author_name":"willuwontu",
-    "version_number":"1.1.4",
+    "version_number":"1.2.0",
 	"website_url":"https://github.com/willuwontu/WillsWackyMapObjects",
 	"displayName":"Will's Wacky Map Objects Editor",
 	"description":"Adds some map objects to the map editor.",
@@ -10,8 +10,8 @@
 		"willis81808-MMHook-1.0.0",
 		"BepInEx-BepInExPack_ROUNDS-5.4.1100",
 		"Pykess-ModdingUtils-0.1.3",
-		"olavim-MapsExtended-0.9.5",
-		"olavim-MapsExtendedEditor-0.9.5",
-		"willuwontu-WillsWackyMapObjects-1.0.0"
+		"olavim-MapsExtended-1.1.0",
+		"olavim-MapsExtendedEditor-1.1.0",
+		"willuwontu-WillsWackyMapObjects-1.2.0"
 	]
 }

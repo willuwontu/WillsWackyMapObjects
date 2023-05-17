@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace WWMO.MapObjectProperties
 {
-    public class ColorProperty : ValueProperty<Color>
+    public class ColorProperty : ValueProperty<Color>, ILinearProperty<ColorProperty>
     {
         [SerializeField] private readonly int _r;
         [SerializeField] private readonly int _g;
@@ -31,6 +31,9 @@ namespace WWMO.MapObjectProperties
         public static implicit operator Color32(ColorProperty prop) => prop.Value;
         public static implicit operator ColorProperty(Color color) => new ColorProperty(color);
         public static implicit operator ColorProperty(Color32 color32) => new ColorProperty(color32);
+
+        public ColorProperty Lerp(ColorProperty end, float t) => Color.Lerp(this, end, t);
+        public IProperty Lerp(IProperty end, float t) => this.Lerp((ColorProperty)end, t);
     }
 
     [PropertySerializer(typeof(ColorProperty))]

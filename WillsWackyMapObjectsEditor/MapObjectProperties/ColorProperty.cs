@@ -30,6 +30,8 @@ namespace WWMO.MapObjectProperties
 
             ColorProperty colorProperty = new ColorProperty(color);
 
+            ColorProperty.defaultColor = colorProperty;
+
             return colorProperty;
         }
     }
@@ -112,6 +114,8 @@ namespace WWMO.MapObjectProperties
             {
                 this.Context.Editor.TakeSnaphot();
             }
+
+            ColorProperty.defaultColor = color;
         }
 
         public void OnChange(float value, ChangeType changeType)
@@ -125,6 +129,8 @@ namespace WWMO.MapObjectProperties
             {
                 this.Context.Editor.TakeSnaphot();
             }
+
+            ColorProperty.defaultColor = (Color32)new Color(this._r.Value / 255, this._g.Value / 255, this._b.Value / 255, this._a.Value / 255);
         }
     }
 }

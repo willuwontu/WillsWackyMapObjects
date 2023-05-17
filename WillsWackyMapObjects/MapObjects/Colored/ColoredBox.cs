@@ -1,6 +1,7 @@
 ﻿using MapsExt.MapObjects;
 using MapsExt;
 using UnityEngine;
+using UnboundLib;
 
 namespace WWMO.MapObjects
 {
@@ -9,16 +10,34 @@ namespace WWMO.MapObjects
     [MapObject(typeof(ColoredBoxData))]
     public class ColoredBox : IMapObject
     {
-        public virtual GameObject Prefab => MapObjectManager.LoadCustomAsset<GameObject>("Box");
+        public virtual GameObject Prefab => Resources.Load<GameObject>("4 Map Objects/Box");
 
         public virtual void OnInstantiate(GameObject instance)
         {
-            Transform lineTransform = instance.transform.Find("Lines");
+            GameObject.Destroy(instance.transform.GetChild(1).gameObject);
+            GameObject.Destroy(instance.transform.GetChild(0).gameObject);
 
-            if (lineTransform != null)
+            SpriteRenderer spriteRenderer = instance.GetComponent<SpriteRenderer>();
+
+            spriteRenderer.enabled = true;
+
+            WillsWackyMapObjects.instance.ExecuteAfterFrames(1, () =>
             {
-                UnityEngine.GameObject.Destroy(lineTransform.gameObject);
-            }
+                SpriteMask mask = instance.GetComponent<SpriteMask>();
+                UnityEngine.GameObject.Destroy(mask);
+
+                spriteRenderer.material = new Material(Shader.Find("Sprites/Default"));
+            });
+
+            WillsWackyMapObjects.instance.ExecuteAfterFrames(5, () =>
+            {
+                SpriteMask mask = instance.GetComponent<SpriteMask>();
+                UnityEngine.GameObject.Destroy(mask);
+
+                spriteRenderer.material = new Material(Shader.Find("Sprites/Default"));
+            });
+
+            spriteRenderer.material = new Material(Shader.Find("Sprites/Default"));
 
             GetColor[] getColors = instance.GetComponentsInChildren<GetColor>();
 

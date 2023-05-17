@@ -7,8 +7,9 @@ using UnboundLib;
 
 namespace WWMO
 {
-    [BepInDependency("com.willis.rounds.unbound", BepInDependency.DependencyFlags.HardDependency)]
-    [BepInDependency("pykess.rounds.plugins.moddingutils", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.willis.rounds.unbound")]
+    [BepInDependency("pykess.rounds.plugins.moddingutils")]
+    [BepInDependency("com.willuwontu.rounds.MapObjects")]
     [BepInPlugin(ModId, ModName, Version)]
     [BepInProcess("Rounds.exe")]
     public class WillsWackyMapObjectsEditor : BaseUnityPlugin

@@ -1,6 +1,7 @@
 ﻿using MapsExt.MapObjects;
 using MapsExt;
 using UnityEngine;
+using UnboundLib;
 
 namespace WWMO.MapObjects
 {
@@ -20,12 +21,23 @@ namespace WWMO.MapObjects
             SpriteMask mask = instance.GetComponent<SpriteMask>();
             UnityEngine.GameObject.Destroy(mask);
 
-            var box = MapObjectManager.LoadCustomAsset<GameObject>("Box");
-            var color = box.transform.Find("Color");
-            var colorSprite = color.GetComponent<SpriteRenderer>();
-            //colorSprite.color = new Color32(55,55,55,255);
+            WillsWackyMapObjects.instance.ExecuteAfterFrames(1, () =>
+            {
+                SpriteMask mask = instance.GetComponent<SpriteMask>();
+                UnityEngine.GameObject.Destroy(mask);
 
-            spriteRenderer.material = colorSprite.material;
+                spriteRenderer.material = new Material(Shader.Find("Sprites/Default"));
+            });
+
+            WillsWackyMapObjects.instance.ExecuteAfterFrames(5, () =>
+            {
+                SpriteMask mask = instance.GetComponent<SpriteMask>();
+                UnityEngine.GameObject.Destroy(mask);
+
+                spriteRenderer.material = new Material(Shader.Find("Sprites/Default"));
+            });
+
+            spriteRenderer.material = new Material(Shader.Find("Sprites/Default"));
 
             GetColor[] getColors = instance.GetComponentsInChildren<GetColor>();
 

@@ -1,19 +1,19 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\WillsWackyMapObjects\WillsWackyMapObjects.csproj" />
-  </ItemGroup>
-	
-  <PropertyGroup>
+	  <PropertyGroup>
     <RoundsFolder>E:\Program Files (x86)\Steam\steamapps\common\ROUNDS</RoundsFolder>
   </PropertyGroup>
-
+	
   <ItemGroup>
     <PackageReference Include="UnboundLib" Version="3.2.10" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <ProjectReference Include="..\WillsWackyMapObjects\WillsWackyMapObjects.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,17 +26,23 @@
     <Reference Include="MapsExtended">
       <HintPath>$(RoundsFolder)\BepInEx\plugins\MapsExtended.dll</HintPath>
     </Reference>
-    <Reference Include="MapsExtended.Editor">
-      <HintPath>$(RoundsFolder)\BepInEx\plugins\MapsExtended.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="MapsExtended.Editor.UI">
-      <HintPath>$(RoundsFolder)\BepInEx\plugins\MapsExtended.Editor.UI.dll</HintPath>
+    <Reference Include="ModdingUtils">
+      <HintPath>$(RoundsFolder)\BepInEx\plugins\ModdingUtils.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>$(RoundsFolder)\Rounds_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
+    <Reference Include="InControl">
+      <HintPath>$(RoundsFolder)\Rounds_Data\Managed\InControl.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotonUnityNetworking">
+      <HintPath>$(RoundsFolder)\Rounds_Data\Managed\PhotonUnityNetworking.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>$(RoundsFolder)\Rounds_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>$(RoundsFolder)\Rounds_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>$(RoundsFolder)\Rounds_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
@@ -44,13 +50,17 @@
     <Reference Include="UnityEngine.ParticleSystemModule">
       <HintPath>$(RoundsFolder)\Rounds_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>$(RoundsFolder)\Rounds_Data\Managed\UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule">
+      <HintPath>$(RoundsFolder)\Rounds_Data\Managed\UnityEngine.SpriteMaskModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>$(RoundsFolder)\Rounds_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.UIModule">
-      <HintPath>$(RoundsFolder)\Rounds_Data\Managed\UnityEngine.UIModule.dll</HintPath>
-    </Reference>
   </ItemGroup>
+
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
     <Target Name="BeforeBuild">

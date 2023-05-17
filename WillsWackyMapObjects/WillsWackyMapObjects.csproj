@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="UnboundLib" Version="3.1.4" />
+    <PackageReference Include="UnboundLib" Version="3.2.10" />
   </ItemGroup>
 	
   <ItemGroup>

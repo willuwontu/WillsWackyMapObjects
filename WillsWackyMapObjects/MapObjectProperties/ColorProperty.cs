@@ -6,6 +6,8 @@ namespace WWMO.MapObjectProperties
 {
     public class ColorProperty : ValueProperty<Color>, ILinearProperty<ColorProperty>
     {
+        public static Color32 defaultColor = new Color32(67,55,43,225);
+
         [SerializeField] private readonly int _r;
         [SerializeField] private readonly int _g;
         [SerializeField] private readonly int _b;
@@ -13,7 +15,7 @@ namespace WWMO.MapObjectProperties
 
         public override Color Value => new Color32((byte)this._r, (byte)this._g, (byte)this._b, (byte)this._a);
 
-        public ColorProperty() : this(67, 55, 43, 225) { }
+        public ColorProperty() : this(defaultColor) { }
 
         public ColorProperty(Color color) : this(Mathf.RoundToInt(color.r * 255), Mathf.RoundToInt(color.g * 255), Mathf.RoundToInt(color.b * 255), Mathf.RoundToInt(color.a * 255)) { }
 

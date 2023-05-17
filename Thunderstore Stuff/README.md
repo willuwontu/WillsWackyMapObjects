@@ -11,6 +11,9 @@ Adds 1 new block
 
 Adds colored versions of the basic objects.
 
+### V 1.2.2
+- Colored Objects behave the same way one would expect an object from the base game to do.
+
 ### V 1.2.1
 - Fix for breaking change to map objects.
 

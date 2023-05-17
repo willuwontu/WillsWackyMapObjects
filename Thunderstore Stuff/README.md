@@ -11,6 +11,9 @@ Adds 1 new block
 
 Adds colored versions of the basic objects.
 
+### V 1.2.1
+- Fix for breaking change to map objects.
+
 ### V 1.2.0
 - Compatibility update for the new version of MapsExtended.
 - Added colored versions of the basic objects.

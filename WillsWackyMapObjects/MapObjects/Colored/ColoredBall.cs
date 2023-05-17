@@ -1,6 +1,7 @@
 ﻿using MapsExt.MapObjects;
 using MapsExt;
 using UnityEngine;
+using UnboundLib;
 
 namespace WWMO.MapObjects
 {
@@ -13,7 +14,51 @@ namespace WWMO.MapObjects
 
         public virtual void OnInstantiate(GameObject instance)
         {
+            var npo = instance.GetComponent<NetworkPhysicsObject>();
 
+            if (npo != null)
+            {
+                npo.bulletPushMultiplier = 200;
+                npo.collisionThreshold = 200000;
+                npo.dmgAmount = 0.5f;
+                npo.forceAmount = 1500f;
+                npo.maxShake = 8000000;
+                npo.playerColThreshold = 5;
+            }
+
+            //GameObject.Destroy(instance.transform.GetChild(2).gameObject);
+            //GameObject.Destroy(instance.transform.GetChild(1).gameObject);
+            //GameObject.Destroy(instance.transform.GetChild(0).gameObject);
+
+            //SpriteRenderer spriteRenderer = instance.GetComponent<SpriteRenderer>();
+
+            //spriteRenderer.enabled = true;
+
+            //WillsWackyMapObjects.instance.ExecuteAfterFrames(1, () =>
+            //{
+            //    SpriteMask mask = instance.GetComponent<SpriteMask>();
+            //    UnityEngine.GameObject.Destroy(mask);
+
+            //    spriteRenderer.material = new Material(Shader.Find("Sprites/Default"));
+            //});
+
+            //WillsWackyMapObjects.instance.ExecuteAfterFrames(5, () =>
+            //{
+            //    SpriteMask mask = instance.GetComponent<SpriteMask>();
+            //    UnityEngine.GameObject.Destroy(mask);
+
+            //    spriteRenderer.material = new Material(Shader.Find("Sprites/Default"));
+            //});
+
+            //spriteRenderer.material = new Material(Shader.Find("Sprites/Default"));
+
+            //GetColor[] getColors = instance.GetComponentsInChildren<GetColor>();
+
+
+            //for (int i = getColors.Length - 1; i >= 0; i--)
+            //{
+            //    UnityEngine.GameObject.DestroyImmediate(getColors[i]);
+            //}
         }
     }
 }

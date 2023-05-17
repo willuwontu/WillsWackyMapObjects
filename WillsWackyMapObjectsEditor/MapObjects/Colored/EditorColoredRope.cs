@@ -2,10 +2,10 @@
 using MapsExt.Editor.MapObjects;
 using UnboundLib;
 using UnityEngine;
-using WillsWackyMapObjectsEditor.Visualizers;
+using WWMO.Visualizers;
 using WWMO.MapObjects;
 
-namespace WillsWackyMapObjectsEditor.MapObjects
+namespace WWMO.MapObjects
 {
     [EditorMapObject(typeof(ColoredRopeData), "Colored Rope")]
     public sealed class EditorColoredRope : ColoredRope

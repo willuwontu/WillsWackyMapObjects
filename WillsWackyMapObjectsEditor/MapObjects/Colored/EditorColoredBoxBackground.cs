@@ -3,7 +3,7 @@ using MapsExt.Editor.MapObjects;
 using UnityEngine;
 using WWMO.MapObjects;
 
-namespace WillsWackyMapObjectsEditor.MapObjects
+namespace WWMO.MapObjects
 {
     [EditorMapObject(typeof(ColoredBoxBackgroundData), "Box (Background)", Category = "Colored Dynamic")]
     public sealed class EditorColoredBoxBackground : ColoredBoxBackground

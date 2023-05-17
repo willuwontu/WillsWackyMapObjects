@@ -6,7 +6,7 @@ using MapsExt.Visualizers;
 using MapsExt;
 using WWMO.MapObjectProperties;
 
-namespace WillsWackyMapObjectsEditor.Visualizers
+namespace WWMO.Visualizers
 {
     internal class ColoredRopeVisualizer : RopeVisualizer
     {
